@@ -1157,7 +1157,7 @@ public class InAppBrowser extends CordovaPlugin {
          */
         public boolean shouldOverrideUrlLoading(String url, String method) {
             boolean override = false;
-            boolean useBeforeload = false;
+            boolean useBeforeload = true;
             String errorMessage = null;
 
             if (beforeload.equals("yes") && method == null) {
