@@ -1160,7 +1160,7 @@ public class InAppBrowser extends CordovaPlugin {
          */
         public boolean shouldOverrideUrlLoading(String url, String method) {
             boolean override = false;
-            boolean useBeforeload = true;
+            boolean useBeforeload = false;
             String errorMessage = null;
 
             if (beforeload.equals("yes") && method == null) {
@@ -1177,6 +1177,7 @@ public class InAppBrowser extends CordovaPlugin {
                 errorMessage = "beforeload doesn't yet support POST requests";
             }
 
+            this.waitForBeforeload = true;
             // On first URL change, initiate JS callback. Only after the beforeload event, continue.
             if (useBeforeload && this.waitForBeforeload) {
                 if(sendBeforeLoad(url, method)) {
