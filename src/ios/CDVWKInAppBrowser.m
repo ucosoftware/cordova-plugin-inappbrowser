@@ -733,15 +733,15 @@ BOOL isExiting = FALSE;
     
     WKWebViewConfiguration* configuration = [[WKWebViewConfiguration alloc] init];
     
-    NSString *userAgent = configuration.applicationNameForUserAgent;
-    userAgent = "in-app-browser";
+    #NSString *userAgent = configuration.applicationNameForUserAgent;
     #if (
     #    [self settingForKey:@"OverrideUserAgent"] == nil &&
     #    [self settingForKey:@"AppendUserAgent"] != nil
     #    ) {
     #    userAgent = [NSString stringWithFormat:@"%@ %@", userAgent, [self settingForKey:@"AppendUserAgent"]];
     #}
-    configuration.applicationNameForUserAgent = userAgent;
+    #configuration.applicationNameForUserAgent = userAgent;
+    configuration.applicationNameForUserAgent = @"in-app-browser";
     configuration.userContentController = userContentController;
 #if __has_include(<Cordova/CDVWebViewProcessPoolFactory.h>)
     configuration.processPool = [[CDVWebViewProcessPoolFactory sharedFactory] sharedProcessPool];
@@ -783,9 +783,10 @@ BOOL isExiting = FALSE;
     self.webView.navigationDelegate = self;
     self.webView.UIDelegate = self.webViewUIDelegate;
     self.webView.backgroundColor = [UIColor whiteColor];
-    if ([self settingForKey:@"OverrideUserAgent"] != nil) {
-        self.webView.customUserAgent = [self settingForKey:@"OverrideUserAgent"];
-    }
+//     if ([self settingForKey:@"OverrideUserAgent"] != nil) {
+//         self.webView.customUserAgent = [self settingForKey:@"OverrideUserAgent"];
+//     }
+    self.webView.customUserAgent = @"in-app-browser";
     
     self.webView.clearsContextBeforeDrawing = YES;
     self.webView.clipsToBounds = YES;
