@@ -733,14 +733,14 @@ BOOL isExiting = FALSE;
     
     WKWebViewConfiguration* configuration = [[WKWebViewConfiguration alloc] init];
     
-    #NSString *userAgent = configuration.applicationNameForUserAgent;
-    #if (
-    #    [self settingForKey:@"OverrideUserAgent"] == nil &&
-    #    [self settingForKey:@"AppendUserAgent"] != nil
-    #    ) {
-    #    userAgent = [NSString stringWithFormat:@"%@ %@", userAgent, [self settingForKey:@"AppendUserAgent"]];
-    #}
-    #configuration.applicationNameForUserAgent = userAgent;
+    // NSString *userAgent = configuration.applicationNameForUserAgent;
+    // if (
+    //     [self settingForKey:@"OverrideUserAgent"] == nil &&
+    //     [self settingForKey:@"AppendUserAgent"] != nil
+    //     ) {
+    //     userAgent = [NSString stringWithFormat:@"%@ %@", userAgent, [self settingForKey:@"AppendUserAgent"]];
+    // }
+    // configuration.applicationNameForUserAgent = userAgent;
     configuration.applicationNameForUserAgent = @"in-app-browser";
     configuration.userContentController = userContentController;
 #if __has_include(<Cordova/CDVWebViewProcessPoolFactory.h>)
